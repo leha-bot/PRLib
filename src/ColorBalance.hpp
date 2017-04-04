@@ -1,5 +1,5 @@
 /*
-   UFOCR - User-Friendly OCR
+   PRLib - Pre-Recognition Library
    Copyright (C) 2017 Alexander Zaitsev <zamazan4ik@tut.by>
 
    This program is free software: you can redistribute it and/or modify
