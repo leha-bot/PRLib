@@ -23,7 +23,7 @@
 
 namespace prl
 {
-void warpCrop(const cv::Mat& sourceImg,
+extern "C" void warpCrop(const cv::Mat& sourceImg,
               cv::Mat& destImg,
               const int x0, const int y0,
               const int x1, const int y1,

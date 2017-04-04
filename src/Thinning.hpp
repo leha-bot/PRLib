@@ -28,7 +28,7 @@ enum class Thinning
     ZhangSuen, GuoHall
 };
 
-void thinning(const cv::Mat& src, cv::Mat& dst, Thinning method = Thinning::ZhangSuen);
+extern "C" void thinning(const cv::Mat& src, cv::Mat& dst, Thinning method = Thinning::ZhangSuen);
 }
 
 #endif //UFOCR_THINNING_HPP

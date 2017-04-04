@@ -16,15 +16,18 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UFOCR_CROPPING_HPP
-#define UFOCR_CROPPING_HPP
+#ifndef PRLIB_DEBLUR_HPP
+#define PRLIB_DEBLUR_HPP
 
 #include "opencv2/core.hpp"
 
 namespace prl
 {
-    //TODO: Research question about value for longSide
-    extern "C" std::vector<cv::Point> getContour(const cv::Mat& src, size_t longSide = 1024);
+    enum class DeblurMethod {Simple};
+
+    //TODO: Maybe we should use other algorithm by default
+extern "C" void deblur(const cv::Mat& src, cv::Mat& dst,
+                DeblurMethod method = DeblurMethod::Simple);
 }
 
-#endif //UFOCR_CROPPING_HPP
+#endif //PRLIB_DEBLUR_HPP

@@ -23,7 +23,7 @@
 
 namespace prl
 {
-    void denoise(const cv::Mat& src, cv::Mat& dst);
+extern "C" void denoise(const cv::Mat& src, cv::Mat& dst);
 }
 
 

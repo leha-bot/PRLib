@@ -29,6 +29,6 @@ enum class ColorBalance
     Simple, Grayworld
 };
 
-void whiteBalance(const cv::Mat& src, cv::Mat& dst, ColorBalance method = ColorBalance::Simple);
+extern "C" void whiteBalance(const cv::Mat& src, cv::Mat& dst, ColorBalance method = ColorBalance::Simple);
 }
 #endif //UFOCR_COLORBALANCE_HPP
