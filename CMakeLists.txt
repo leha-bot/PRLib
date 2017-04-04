@@ -21,9 +21,9 @@ set(OpenCV_LIBSS libopencv_ximgproc.a libopencv_xphoto.a libopencv_shape.a libop
         libopencv_ml.a libopencv_objdetect.a  libopencv_features2d.a
         libopencv_flann.a libopencv_imgproc.a libopencv_highgui.a libopencv_core.a)
 
-set(SOURCES src/core/GeneralImage.cpp src/core/GeneralImage.hpp src/core/cvmatandqimage.cpp src/core/cvmatandqimage.h src/logger.hpp src/logger.cpp src/core/BlurDetection.hpp
-    src/core/BlurDetection.cpp src/core/Thinning.cpp src/core/Thinning.hpp src/core/Smoothing.cpp src/core/Smoothing.hpp src/core/ColorBalance.cpp src/core/ColorBalance.hpp src/core/Warp.cpp src/core/Warp.hpp 
-    src/core/Deskew.cpp src/core/Deskew.hpp src/core/Cropping.cpp src/core/Cropping.hpp src/core/Binarization.cpp src/core/Binarization.hpp src/SystemTray.cpp src/SystemTray.hpp src/core/Denoising.cpp src/core/Denoising.hpp)
+set(SOURCES src/GeneralImage.cpp src/GeneralImage.hpp src/cvmatandqimage.cpp src/cvmatandqimage.h src/logger.hpp src/logger.cpp src/BlurDetection.hpp
+    src/BlurDetection.cpp src/Thinning.cpp src/Thinning.hpp src/Smoothing.cpp src/Smoothing.hpp src/ColorBalance.cpp src/ColorBalance.hpp src/Warp.cpp src/Warp.hpp
+    src/Deskew.cpp src/Deskew.hpp src/Cropping.cpp src/Cropping.hpp src/Binarization.cpp src/Binarization.hpp src/Denoising.cpp src/Denoising.hpp)
 
 
 
