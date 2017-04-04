@@ -21,7 +21,7 @@
 #include "opencv2/opencv.hpp"
 #include "opencv2/ximgproc.hpp"
 
-void IPL::thinning(const cv::Mat& src, cv::Mat& dst, Thinning method /*= Thinning::ZhangSuen*/)
+void prl::thinning(const cv::Mat& src, cv::Mat& dst, Thinning method /*= Thinning::ZhangSuen*/)
 {
     switch (method)
     {

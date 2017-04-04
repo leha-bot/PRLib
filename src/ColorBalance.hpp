@@ -21,7 +21,7 @@
 
 #include "opencv2/core.hpp"
 
-namespace IPL
+namespace prl
 {
 //TODO: Add white balance, gamma-correction. Manual and automatic
 enum class ColorBalance

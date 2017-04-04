@@ -19,7 +19,7 @@
 #ifndef UFOCR_SMOOTHING_HPP
 #define UFOCR_SMOOTHING_HPP
 
-namespace IPL
+namespace prl
 {
 //TODO: Add gauss bilateral filter, adaptive bilateral filter, non-local filter
 }

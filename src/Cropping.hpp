@@ -21,7 +21,7 @@
 
 #include "opencv2/core.hpp"
 
-namespace IPL
+namespace prl
 {
     //TODO: Research question about value for longSide
     std::vector<cv::Point> getContour(const cv::Mat& src, size_t longSide = 1024);

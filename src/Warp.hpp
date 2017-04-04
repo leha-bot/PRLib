@@ -21,7 +21,7 @@
 
 #include "opencv2/core.hpp"
 
-namespace IPL
+namespace prl
 {
 void warpCrop(const cv::Mat& sourceImg,
               cv::Mat& destImg,

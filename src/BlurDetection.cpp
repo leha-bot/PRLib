@@ -74,17 +74,8 @@ double GLVN_Algo(const cv::Mat& src)
     return focusMeasure;
 }
 
-#include <QDebug>
-
-bool IPL::isBlurred(const cv::Mat& src, IPL::BlurDetectionAlgo algo)
+bool prl::isBlurred(const cv::Mat& src, prl::BlurDetectionAlgo algo)
 {
-    //Begin test
-    qDebug() << "LAPM: " << LAPM_Algo(src);
-    qDebug() << "LAPV: " << LAPV_Algo(src);
-    qDebug() << "TENG: " << TENG_Algo(src, 5);
-    qDebug() << "GLVN: " << GLVN_Algo(src);
-    //End test
-
     //TODO: find constants for blurring check for every algorithm. Write supertest, powered by all algorithms
     switch (algo)
     {

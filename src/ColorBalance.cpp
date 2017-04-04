@@ -20,7 +20,7 @@
 
 #include "opencv2/xphoto.hpp"
 
-void IPL::whiteBalance(const cv::Mat& src, cv::Mat& dst, ColorBalance method/* = ColorBalance::Simple*/)
+void prl::whiteBalance(const cv::Mat& src, cv::Mat& dst, ColorBalance method/* = ColorBalance::Simple*/)
 {
     switch (method)
     {

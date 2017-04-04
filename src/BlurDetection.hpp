@@ -22,7 +22,7 @@
 
 #include "opencv2/core.hpp"
 
-namespace IPL
+namespace prl
 {
 
 enum class BlurDetectionAlgo

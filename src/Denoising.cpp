@@ -21,7 +21,7 @@
 #include "opencv2/xphoto.hpp"
 #include "opencv2/photo.hpp"
 
-void IPL::denoise(const cv::Mat& src, cv::Mat& dst)
+void prl::denoise(const cv::Mat& src, cv::Mat& dst)
 {
     //Too slow
     //cv::xphoto::dctDenoising(src, dst, 15.0);

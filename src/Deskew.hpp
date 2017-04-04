@@ -19,7 +19,7 @@
 #ifndef UFOCR_DESKEW_HPP
 #define UFOCR_DESKEW_HPP
 
-namespace IPL
+namespace prl
 {
     //TODO: Add manual deskew and auto-deskew
 }

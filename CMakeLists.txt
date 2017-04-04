@@ -21,7 +21,7 @@ set(OpenCV_LIBSS libopencv_ximgproc.a libopencv_xphoto.a libopencv_shape.a libop
         libopencv_ml.a libopencv_objdetect.a  libopencv_features2d.a
         libopencv_flann.a libopencv_imgproc.a libopencv_highgui.a libopencv_core.a)
 
-set(SOURCES src/GeneralImage.cpp src/GeneralImage.hpp src/cvmatandqimage.cpp src/cvmatandqimage.h src/logger.hpp src/logger.cpp src/BlurDetection.hpp
+set(SOURCES src/logger.hpp src/logger.cpp src/BlurDetection.hpp
     src/BlurDetection.cpp src/Thinning.cpp src/Thinning.hpp src/Smoothing.cpp src/Smoothing.hpp src/ColorBalance.cpp src/ColorBalance.hpp src/Warp.cpp src/Warp.hpp
     src/Deskew.cpp src/Deskew.hpp src/Cropping.cpp src/Cropping.hpp src/Binarization.cpp src/Binarization.hpp src/Denoising.cpp src/Denoising.hpp)
 

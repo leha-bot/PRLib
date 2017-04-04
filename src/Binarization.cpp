@@ -21,7 +21,7 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/ximgproc.hpp"
 
-void IPL::binarize(const cv::Mat& src, cv::Mat& dst,
+void prl::binarize(const cv::Mat& src, cv::Mat& dst,
                    BinarizationMethod method /*= BinarizationMethod::Otsu*/)
 {
     switch (method)

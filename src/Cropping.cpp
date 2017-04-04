@@ -45,7 +45,7 @@ std::vector<cv::Point> orderPoints(const std::vector<cv::Point>& contour)
     return {topLeft, topRight, bottomRight, bottomLeft};
 }
 
-std::vector<cv::Point> IPL::getContour(const cv::Mat& src, size_t longSide /*= 1024*/)
+std::vector<cv::Point> prl::getContour(const cv::Mat& src, size_t longSide /*= 1024*/)
 {
     //TODO: Add more algorithms for border detecting
     //TODO: Research good constants for Canny edge detector

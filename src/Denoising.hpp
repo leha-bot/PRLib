@@ -21,7 +21,7 @@
 
 #include "opencv2/core.hpp"
 
-namespace IPL
+namespace prl
 {
     void denoise(const cv::Mat& src, cv::Mat& dst);
 }
