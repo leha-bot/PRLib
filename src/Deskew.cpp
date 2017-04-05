@@ -1,19 +1,25 @@
 /*
-   PRLib - Pre-Recognition Library
-   Copyright (C) 2017 Alexander Zaitsev <zamazan4ik@tut.by>
+    MIT License
 
-   This program is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+    Copyright (c) 2017 Alexander Zaitsev
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
 
-   You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
 */
 
 #include "Deskew.hpp"
@@ -38,35 +44,18 @@
 # pragma warning(pop)
 #endif // _MSC_VER
 
-#if defined(_WIN32) || defined(_MSC_VER)
-#include <direct.h>
-#include <codecvt>
-#define GetCurrentDir _wgetcwd
-#define STRLEN wcslen
-#else
-#include <unistd.h>
-#define GetCurrentDir getcwd
-#define STRLEN strlen
-#endif //WIN32
-
 #include <algorithm>
 #include <functional>
 #include <cctype>
 #include <list>
 #include <map>
 
-#include <leptonica/pix.h>
-
-
 #ifndef M_PI
-
 #ifdef CV_PI
 #define M_PI CV_PI
 #else
 #define M_PI 3.141592653
 #endif
-
-
 #endif // !M_PI
 
 
@@ -78,24 +67,24 @@ typedef unsigned short WORD;
 struct BITMAPFILEHEADER
 {
     ushort bfType;
-    uint   bfSize;
-    uint   bfReserved;
-    uint   bfOffBits;
+    uint bfSize;
+    uint bfReserved;
+    uint bfOffBits;
 };
 
 struct BITMAPINFOHEADER
 {
-    uint  biSize;
-    int   biWidth;
-    int   biHeight;
+    uint biSize;
+    int biWidth;
+    int biHeight;
     short biPlanes;
     short biBitCount;
-    uint  biCompression;
-    uint  biSizeImage;
-    int   biXPelsPerMeter;
-    int   biYPelsPerMeter;
-    uint  biClrUsed;
-    uint  biClrImportant;
+    uint biCompression;
+    uint biSizeImage;
+    int biXPelsPerMeter;
+    int biYPelsPerMeter;
+    uint biClrUsed;
+    uint biClrImportant;
 };
 
 struct RGBQUAD
@@ -109,14 +98,8 @@ struct RGBQUAD
 struct BITMAPINFO
 {
     BITMAPINFOHEADER bmiHeader;
-    RGBQUAD          bmiColors[256];
+    RGBQUAD bmiColors[256];
 };
-
-
-
-
-
-
 
 
 int hmod(int num, int denom)
@@ -226,7 +209,7 @@ PIX* ImgOpenCvToLepton(const cv::Mat src)
     bmi->bmiHeader.biClrImportant = 0;
 
     {
-        RGBQUAD* colormap = (RGBQUAD * )(buffer + sizeof(BITMAPINFOHEADER));
+        RGBQUAD* colormap = (RGBQUAD*) (buffer + sizeof(BITMAPINFOHEADER));
         colormap[0].rgbBlue = 0xFF;
         colormap[0].rgbGreen = 0xFF;
         colormap[0].rgbRed = 0xFF;
@@ -240,7 +223,7 @@ PIX* ImgOpenCvToLepton(const cv::Mat src)
     memset(bytes, 0, psize);
     pix = _CreatePIX(*bmi, bytes);
     delete[] bytes;
-    bytes = (unsigned char*)(pix->data);
+    bytes = (unsigned char*) (pix->data);
 
     unsigned char* blockPointer = &bytes[3];
     int blockDelta = 4;
@@ -256,7 +239,7 @@ PIX* ImgOpenCvToLepton(const cv::Mat src)
             }
 
 /* Get value from cv::Mat*/
-            const unsigned char cell = src.at<unsigned char>(j, i);
+            const unsigned char cell = src.at < unsigned char > (j, i);
             bool isBlack = false;
             if ((cell != 0) && (cell != 0xff))
             {}
@@ -346,11 +329,11 @@ cv::Mat ImgLeptonToOpenCV(const PIX* src)
             unsigned char v = bHigh / divider;
             if (v > 0)
             {
-                mat.at<unsigned char>(j, i) = 0x00;
+                mat.at < unsigned char > (j, i) = 0x00;
             }
             else
             {
-                mat.at<unsigned char>(j, i) = 0xff;
+                mat.at < unsigned char > (j, i) = 0xff;
             }
             i++;
             bHigh = bHigh - v * divider;
@@ -364,11 +347,11 @@ cv::Mat ImgLeptonToOpenCV(const PIX* src)
             unsigned char v = bLow / divider;
             if (v > 0)
             {
-                mat.at<unsigned char>(j, i) = 0x00;
+                mat.at < unsigned char > (j, i) = 0x00;
             }
             else
             {
-                mat.at<unsigned char>(j, i) = 0xff;
+                mat.at < unsigned char > (j, i) = 0xff;
             }
             i++;
             bLow = bLow - v * divider;
@@ -468,12 +451,8 @@ bool compare_pairs(const std::pair<double, int>& p1, const std::pair<double, int
 
 bool eq_d(double v1, double v2, double delta)
 {
-    if (std::abs(v1 - v2) <= delta)
-    {
-        return true;
-    }
+    return std::abs(v1 - v2) <= delta;
 
-    return false;
 }
 
 double FindAngle(const cv::Mat& input_orig)
@@ -512,15 +491,15 @@ double FindAngle(const cv::Mat& input_orig)
     const double delta = 0.01; //difference is less than 1 deg.
     std::list<std::pair<double, int> > t_diff;
 
-    for (auto it = cv_angles.begin(); it != cv_angles.end(); ++it)
+    for (auto angle : cv_angles)
     {
         bool found = false;
         // bypass list
-        for (std::list<std::pair<double, int>>::iterator elem = t_diff.begin(); elem != t_diff.end(); ++elem)
+        for (auto& elem : t_diff)
         {
-            if (eq_d(*it, elem->first, delta))
+            if (eq_d(angle, elem.first, delta))
             {
-                elem->second++;
+                elem.second++;
                 found = true;
                 break;
             }
@@ -528,8 +507,7 @@ double FindAngle(const cv::Mat& input_orig)
 
         if (!found)
         {
-            std::pair<double, int> p(*it, 0);
-            t_diff.push_back(p);
+            t_diff.push_back(std::make_pair(angle, 0));
         }
     }
 
@@ -608,7 +586,8 @@ bool prl::deskew(cv::Mat& inputImage, cv::Mat& deskewedImage)
 
     double angle = FindAngle(processingImage);
 
-    if ((angle != 0) && (angle <= DBL_MAX && angle >= -DBL_MAX))
+    if ((angle != 0) && (angle <= std::numeric_limits<double>::max() &&
+                         angle >= std::numeric_limits<double>::min()))
     {
         deskewedImage = Rotate(inputImage, angle);
     }
