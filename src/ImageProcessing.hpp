@@ -33,5 +33,6 @@
 #include "Deskew.hpp"
 #include "Cropping.hpp"
 #include "Denoising.hpp"
+#include "Rotate.hpp"
 
 #endif //UFOCR_IMAGEPROCESSING_HPP
