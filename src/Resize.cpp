@@ -22,25 +22,46 @@
     SOFTWARE.
 */
 
-#include "Smoothing.hpp"
+#include "Resize.hpp"
 
 #include "opencv2/imgproc.hpp"
 
-void prl::smooth(const cv::Mat& src, cv::Mat& dst, SmoothMethod method /*= SmoothMethod::Bilateral*/)
+void prl::resize(const cv::Mat& src, cv::Mat& dst, int scaleX, int scaleY, int nProcessedImageSize)
 {
-    switch (method)
+    cv::Mat imageToProc;
+
+    //! Store source image size
+    cv::Size sourceImageSize(src.size());
+
+    cv::Size newImageSize;
+
+    if (scaleX > 0 && scaleY > 0)
     {
-        case SmoothMethod::Median:
-            cv::medianBlur(src, dst, 5);
-            break;
-        case SmoothMethod::Gaussian:
-            cv::GaussianBlur(src, dst, cv::Size(11, 11), 10, 30);
-            break;
-        case SmoothMethod::Bilateral:
-            cv::bilateralFilter(src, dst, 5, 100, 100);
-            break;
-        default:
-            //TODO: Implement new algorithms
-            throw std::runtime_error("Smooth algorithm is not implemented yet");
+        newImageSize = cv::Size(
+                static_cast<int>(src.cols * scaleX),
+                static_cast<int>(src.rows * scaleY)
+        );
+
+        cv::resize(src, imageToProc, newImageSize, 0, 0, cv::INTER_AREA);
+    }
+    else
+    {
+        int longSide = std::max(src.cols, src.rows);
+
+        int scaleFactorX = 1;
+        int scaleFactorY = 1;
+
+        imageToProc = src.clone();
+
+        while (longSide > nProcessedImageSize)
+        {
+            cv::pyrDown(imageToProc, imageToProc);
+
+            longSide = std::max(imageToProc.cols, imageToProc.rows);
+            scaleFactorX *= 2;
+            scaleFactorY *= 2;
+        }
+
+        newImageSize = cv::Size(src.cols / scaleFactorX, src.rows / scaleFactorY);
     }
 }

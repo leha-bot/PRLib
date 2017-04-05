@@ -22,8 +22,13 @@ set(OpenCV_LIBSS libopencv_ximgproc.a libopencv_xphoto.a libopencv_shape.a libop
         libopencv_flann.a libopencv_imgproc.a libopencv_highgui.a libopencv_core.a)
 
 set(SOURCES src/logger.hpp src/logger.cpp src/BlurDetection.hpp
-    src/BlurDetection.cpp src/Thinning.cpp src/Thinning.hpp src/Smoothing.cpp src/Smoothing.hpp src/ColorBalance.cpp src/ColorBalance.hpp src/Warp.cpp src/Warp.hpp
-    src/Deskew.cpp src/Deskew.hpp src/Cropping.cpp src/Cropping.hpp src/Binarization.cpp src/Binarization.hpp src/Denoising.cpp src/Denoising.hpp src/SauvolaBinarization.cpp src/SauvolaBinarization.h src/Deblur.cpp src/Deblur.hpp src/Rotate.cpp src/Rotate.hpp src/FormatConvert.cpp src/FormatConvert.hpp src/Compatibility.hpp)
+        src/BlurDetection.cpp src/Thinning.cpp src/Thinning.hpp src/Smoothing.cpp src/Smoothing.hpp
+        src/ColorBalance.cpp src/ColorBalance.hpp src/Warp.cpp src/Warp.hpp
+        src/Deskew.cpp src/Deskew.hpp src/Cropping.cpp src/Cropping.hpp src/Binarization.cpp
+        src/Binarization.hpp src/Denoising.cpp src/Denoising.hpp src/SauvolaBinarization.cpp
+        src/SauvolaBinarization.h src/Deblur.cpp src/Deblur.hpp src/Rotate.cpp src/Rotate.hpp
+        src/FormatConvert.cpp src/FormatConvert.hpp src/Compatibility.hpp src/Resize.cpp
+        src/Resize.hpp)
 
 
 

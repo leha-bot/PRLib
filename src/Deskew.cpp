@@ -124,7 +124,7 @@ bool compare_pairs(const std::pair<double, int>& p1, const std::pair<double, int
     return p1.second < p2.second;
 }
 
-bool eq_d(double v1, double v2, double delta)
+bool eq_d(const double v1, const double v2, const double delta)
 {
     return std::abs(v1 - v2) <= delta;
 

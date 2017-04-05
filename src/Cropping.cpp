@@ -24,6 +24,8 @@
 
 #include "Cropping.hpp"
 
+#include <algorithm>
+
 #include "opencv2/imgproc.hpp"
 
 bool isQuadrangle(const std::vector<cv::Point>& contour)
@@ -40,13 +42,14 @@ std::vector<cv::Point> orderPoints(const std::vector<cv::Point>& contour)
         sum[i] = {contour[i].x + contour[i].y, i};
         diff[i] = {contour[i].x - contour[i].y, i};
     }
-    std::sort(sum.begin(), sum.end());
-    std::sort(diff.begin(), diff.end());
 
-    cv::Point topLeft       = contour[sum[0].second],
-              topRight      = contour[diff[3].second],
-              bottomRight   = contour[sum[3].second],
-              bottomLeft    = contour[diff[0].second];
+    auto sumPoints = std::minmax_element(sum.begin(), sum.end());
+    auto diffPoints = std::minmax_element(diff.begin(), diff.end());
+
+    cv::Point topLeft       = contour[sumPoints.first->second],
+              topRight      = contour[diffPoints.second->second],
+              bottomRight   = contour[sumPoints.second->second],
+              bottomLeft    = contour[diffPoints.first->second];
 
     return {topLeft, topRight, bottomRight, bottomLeft};
 }

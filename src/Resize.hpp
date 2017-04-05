@@ -22,25 +22,14 @@
     SOFTWARE.
 */
 
-#include "Smoothing.hpp"
+#ifndef PRLIB_RESIZE_HPP
+#define PRLIB_RESIZE_HPP
 
-#include "opencv2/imgproc.hpp"
+#include "opencv2/core.hpp"
 
-void prl::smooth(const cv::Mat& src, cv::Mat& dst, SmoothMethod method /*= SmoothMethod::Bilateral*/)
+namespace prl
 {
-    switch (method)
-    {
-        case SmoothMethod::Median:
-            cv::medianBlur(src, dst, 5);
-            break;
-        case SmoothMethod::Gaussian:
-            cv::GaussianBlur(src, dst, cv::Size(11, 11), 10, 30);
-            break;
-        case SmoothMethod::Bilateral:
-            cv::bilateralFilter(src, dst, 5, 100, 100);
-            break;
-        default:
-            //TODO: Implement new algorithms
-            throw std::runtime_error("Smooth algorithm is not implemented yet");
-    }
+extern "C" void resize(const cv::Mat& src, cv::Mat& dst, int scaleX, int scaleY, int nProcessedImageSize);
 }
+
+#endif //PRLIB_RESIZE_HPP
