@@ -24,7 +24,8 @@ The main aim of the library - prepare image for recogntion. Image processing can
 ```
 3) Run cmake:
 ```
-    cmake ..
+   cd build 
+   cmake ..
 ```    
 4) Run make:
 ```
