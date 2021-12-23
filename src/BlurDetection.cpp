@@ -93,6 +93,9 @@ bool prl::isBlurred(const cv::Mat& src, prl::BlurDetectionAlgo algo)
             return TENG_Algo(src, 5);
         case BlurDetectionAlgo::GLVN:
             return GLVN_Algo(src);
+        default:
+        break;
     }
+    return false;
 }
 
