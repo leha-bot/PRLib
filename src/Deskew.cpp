@@ -71,7 +71,7 @@ double FindOrientation(const cv::Mat& input)
     {
         l_float32 fUpConf;
         l_float32 fLeftConf;
-        if (pixOrientDetectDwa(pix, &fUpConf, &fLeftConf, 0, 0) != 0)
+        if (pixOrientDetect(pix, &fUpConf, &fLeftConf, 0, 0) != 0)
         {
             if (pix)
             {

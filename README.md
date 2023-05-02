@@ -30,3 +30,8 @@ The main aim of the library - prepare image for recogntion. Image processing can
 ```
     make
 ```    
+
+*Build tested*
+
+- Opencv: 4.7.0
+- Leptonica: 1.82.0-3
